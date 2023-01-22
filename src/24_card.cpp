@@ -250,6 +250,8 @@ void solution(vector<vector<string>> permutation, long *exeTime)
         cout << "Tidak ada solusi" << endl;
     } else 
     {
+        cout << "Jumlah solusi : " << count << endl;
+
         char c;
         string filename;
 

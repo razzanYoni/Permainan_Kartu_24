@@ -128,12 +128,13 @@ bool result(vector<string> arithmetic)
     }
 }
 
-void solution(vector<vector<string>> permutation, long *exeTime)
+void solution(vector<vector<string>> permutation, long ctime)
 {
     /* Deskripsi : mencari solusi untuk setiap kemungkinan operasi aritmatik dan kemungkinan tanda kurung*/
     /* F.S : Mengembalikan hasil array of int */
     vector<vector<string>> arithmetic(5);
     vector<vector<string>> solution(7680);
+    long etime;
     bool found = false;
     int count = 0;
 
@@ -226,14 +227,11 @@ void solution(vector<vector<string>> permutation, long *exeTime)
                         if (result(arithmetic[i]))
                         {
                             found = true;
-
-                            cout << "Solusi : ";
+                            
                             for (string x : arithmetic[i])
                             {
-                                cout << x ;
                                 solution[count].emplace_back(x);
                             }
-                            cout << endl;
                             count++;
                         }
                         arithmetic[i].clear();
@@ -243,14 +241,25 @@ void solution(vector<vector<string>> permutation, long *exeTime)
         }
     }
     
-    *exeTime = time(NULL);
-
+    etime = time(NULL);
+    cout << "Waktu Eksekusi : " << etime - ctime << " detik" << endl;
+    
     if (!found)
     {
         cout << "Tidak ada solusi" << endl;
     } else 
     {
         cout << "Jumlah solusi : " << count << endl;
+
+        for (int i = 0; i < count; i++)
+        {
+            cout << "Solusi : ";
+            for (string x : solution[i])
+            {
+                cout << x;
+            }
+            cout << endl;
+        }
 
         char c;
         string filename;
@@ -305,7 +314,7 @@ int main(int argc, char const *argv[])
     vector<string> temp(4);
     vector<vector<string>> permutation(24);
     short num[4];
-    long ctime, etime;
+    long ctime;
 
     cout << "===== Permainan Kartu 24 =====" << endl;
     while (PlayGame) {
@@ -358,8 +367,7 @@ int main(int argc, char const *argv[])
             {
                 ctime = time(NULL);
                 permutation = permute(temp);
-                solution(permutation, &etime);
-                cout << "Waktu Eksekusi : " << etime - ctime << " detik" << endl;
+                solution(permutation, ctime);
             }
             
             for (int i = 0; i < 4; i++)
@@ -403,8 +411,7 @@ int main(int argc, char const *argv[])
             
             ctime = time(NULL);
             permutation = permute(temp);
-            solution(permutation, &etime);
-            cout << "Waktu Eksekusi : " << etime - ctime << " detik" << endl;
+            solution(permutation, ctime);
             
             break;
         case 3:

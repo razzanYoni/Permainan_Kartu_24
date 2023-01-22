@@ -7,14 +7,14 @@ Permainan kartu 24 adalah permainan kartu aritmatika dengan tujuan mencari cara 
     - Windows
         ```.\compile.bat```
     - UNIX
-        ```chmod +x ./compile.sh```
-        ```./compile.sh```
+        - ```chmod +x ./compile.sh```
+        - ```./compile.sh```
 - Menjalankan program dengan
     - Windows
         ```.\run.bat```
     - UNIX
-        ```chmod +x ./run.sh```
-        ```./run.sh```
+        - ```chmod +x ./run.sh```
+        - ```./run.sh```
 
 ## Contributor
 (13521087) Razzan Daksana Yoni
